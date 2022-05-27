@@ -8,27 +8,27 @@ export class PropertiesController {
   constructor(private readonly propertiesService: PropertiesService) {}
 
   @Post()
-  create(@Body() createPropertyDto: CreatePropertyDto) {
-    return this.propertiesService.create(createPropertyDto);
+  async create(@Body() createPropertyDto: CreatePropertyDto) {
+    return await this.propertiesService.create(createPropertyDto);
   }
 
   @Get()
-  findAll() {
-    return this.propertiesService.findAll();
+  async findAll() {
+    return await this.propertiesService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.propertiesService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    return await this.propertiesService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePropertyDto: UpdatePropertyDto) {
-    return this.propertiesService.update(+id, updatePropertyDto);
+  async update(@Param('id') id: string, @Body() updatePropertyDto: UpdatePropertyDto) {
+    return await this.propertiesService.update(id, updatePropertyDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.propertiesService.remove(+id);
+  async remove(@Param('id') id: string) {
+    return await this.propertiesService.remove(id);
   }
 }

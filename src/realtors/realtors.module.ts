@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
 import { RealtorsService } from './realtors.service';
-import { RealtorsController } from './realtors.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Realtor, RealtorSchema } from './realtors.schema';
 
 @Module({
-  controllers: [RealtorsController],
-  providers: [RealtorsService]
+  imports: [MongooseModule.forFeature([{ name: 'Realtor', schema: RealtorSchema }])],
+  controllers: [],
+  providers: [RealtorsService],
+  exports: [RealtorsService]
 })
 export class RealtorsModule {}

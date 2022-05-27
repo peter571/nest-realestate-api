@@ -3,6 +3,7 @@ import { AppModule } from './app/app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  app.enableCors({ "origin": 'https://realtors-homes.netlify.app/'});
+  await app.listen(process.env.PORT || 8080);
 }
 bootstrap();

@@ -1,26 +1,40 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { UpdatePropertyDto } from './dto/update-property.dto';
+import { PropertyDocument } from './properties.schema';
 
 @Injectable()
 export class PropertiesService {
-  create(createPropertyDto: CreatePropertyDto) {
-    return 'This action adds a new property';
+
+  constructor(
+    @InjectModel('Property') private propertyModel: Model<PropertyDocument>,
+  ) { }
+
+  async create(createPropertyDto: CreatePropertyDto) {
+    const newProperty = await this.propertyModel.create(createPropertyDto);
+    return await newProperty.save();
   }
 
-  findAll() {
-    return `This action returns all properties`;
+  async findAll() {
+    return await this.propertyModel.find().exec();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} property`;
+  async findOne(id: string) {
+    return await this.propertyModel.findOne({ _id: id }).exec();
   }
 
-  update(id: number, updatePropertyDto: UpdatePropertyDto) {
-    return `This action updates a #${id} property`;
+  async update(id: string, updatePropertyDto: UpdatePropertyDto) {
+    return await this.propertyModel.findByIdAndUpdate(id, updatePropertyDto, {
+      new: true,
+    });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} property`;
+  async remove(id: string) {
+    const deletedProperty = await this.propertyModel
+      .findByIdAndRemove({ _id: id })
+      .exec();
+    return deletedProperty;
   }
 }
