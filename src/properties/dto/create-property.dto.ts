@@ -2,11 +2,10 @@ import { Schema } from 'mongoose';
 
 export class CreatePropertyDto {
     owner: Schema.Types.ObjectId;
-    images: [];
-    verified: boolean;
+    images: string[];
     rooms: number;
     bathrooms: number;
-    price: string;
+    price: number;
     sqft: number;
     description: string;
     place: string;

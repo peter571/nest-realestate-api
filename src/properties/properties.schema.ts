@@ -6,14 +6,11 @@ export type PropertyDocument = Property & mongoose.Document;
 @Schema()
 export class Property {
 
-    @Prop({ required: true, type: mongoose.Schema.Types.ObjectId })
+    @Prop({ required: false, type: mongoose.Schema.Types.ObjectId })
     owner: { type: mongoose.Schema.Types.ObjectId, ref: 'Realtor' }
 
     @Prop({ required: true })
     images: string[];
-
-    @Prop({ required: true })
-    verified: boolean;
 
     @Prop({ required: true })
     rooms: number;
@@ -22,7 +19,7 @@ export class Property {
     bathrooms: number;
 
     @Prop({ required: true })
-    price: string;
+    price: number;
 
     @Prop({ required: true })
     sqft: number;
@@ -36,7 +33,7 @@ export class Property {
     @Prop({ required: true })
     type: string;
 
-    @Prop({ required: true })
+    @Prop({ required: false })
     availability: boolean;
 }
 
