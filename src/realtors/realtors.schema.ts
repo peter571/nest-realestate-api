@@ -15,10 +15,10 @@ export class Realtor {
   @Prop({ required: true })
   email: string;
 
-  @Prop()
+  @Prop({ requred: true })
   realtorname: string;
 
-  @Prop()
+  @Prop({ requred: true })
   imgFile: string;
 
   @Prop({ required: true })
