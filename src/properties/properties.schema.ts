@@ -31,7 +31,7 @@ export class Property {
     title: string;
 
     @Prop({ required: true })
-    contact: any;
+    contact: string;
 
     @Prop({ required: true })
     place: string;
