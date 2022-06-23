@@ -1,7 +1,6 @@
 import { Controller, Request, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { RealtorsService } from '../realtors/realtors.service';
 import { CreateRealtorDto } from '../realtors/dto/create-realtor.dto';
-import { AuthGuard } from '@nestjs/passport';
 import { LocalAuthGuard } from '../auth/local-auth.guard';
 import { AuthService } from '../auth/auth.service';
 import { LoginDto } from 'src/auth/login.dto';
@@ -26,7 +25,7 @@ export class AuthController {
 
   }
 
-  @UseGuards(LocalAuthGuard)
+  // @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Body() UserDto: LoginDto) {
     const user = await this.realtorsService.login(UserDto);
