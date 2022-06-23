@@ -1,6 +1,6 @@
 export class CreateRealtorDto {
     realtorName: string;
     email: string;
-    password: any;
+    password: string;
     profileImg: string;
 }
