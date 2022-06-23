@@ -22,7 +22,7 @@ export class Realtor {
   profileImg: string;
 
   @Prop({ required: true })
-  password: any;
+  password: string;
 }
 
 export const RealtorSchema = SchemaFactory.createForClass(Realtor);
