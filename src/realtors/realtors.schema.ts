@@ -16,13 +16,13 @@ export class Realtor {
   email: string;
 
   @Prop({ requred: true })
-  realtorname: string;
+  realtorName: string;
 
   @Prop({ requred: true })
-  imgFile: string;
+  profileImg: string;
 
   @Prop({ required: true })
-  password: string;
+  password: any;
 }
 
 export const RealtorSchema = SchemaFactory.createForClass(Realtor);

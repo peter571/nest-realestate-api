@@ -28,6 +28,12 @@ export class Property {
     description: string;
 
     @Prop({ required: true })
+    title: string;
+
+    @Prop({ required: true })
+    contact: any;
+
+    @Prop({ required: true })
     place: string;
 
     @Prop({ required: true })
