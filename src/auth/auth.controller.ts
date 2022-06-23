@@ -25,7 +25,7 @@ export class AuthController {
 
   }
 
-  // @UseGuards(LocalAuthGuard)
+  @UseGuards(LocalAuthGuard)
   @Post('login')
   async login(@Body() UserDto: LoginDto) {
     const user = await this.realtorsService.login(UserDto);
