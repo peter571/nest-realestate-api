@@ -8,13 +8,10 @@ import { ExtractJwt, VerifiedCallback } from 'passport-jwt'
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
-    super({
-      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: process.env.SECRET_KEY,
-    });
+    super();
   }
 
-  async validate(payload: any, done: VerifiedCallback): Promise<any> {
+  async validate(payload: Payload, done: VerifiedCallback): Promise<any> {
     const user = await this.authService.validateUser(payload);
     if (!user) {
       return done(
@@ -22,6 +19,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
         false,
       );
     }
-    return done(null, user, payload.iat);
+    return done(null, user);
   }
 }
