@@ -14,7 +14,6 @@ export class PropertiesController {
     return await this.propertiesService.create(createPropertyDto);
   }
 
-  @UseGuards(JwtAuthGuard)
   @Get()
   async findAll() {
     return await this.propertiesService.findAll();
@@ -25,11 +24,13 @@ export class PropertiesController {
     return await this.propertiesService.findOne(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updatePropertyDto: UpdatePropertyDto) {
     return await this.propertiesService.update(id, updatePropertyDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
   async remove(@Param('id') id: string) {
     return await this.propertiesService.remove(id);
